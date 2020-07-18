@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+
+                <main>
+                    <div class="container-fluid">
+                      <p>
+                        <ol class="breadcrumb mb-4">
+                            <li class="breadcrumb-item active">근태현황 리포트</li>
+                        </ol>
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                <i class="fas fa-table mr-1"></i>
+                                근태 현황
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                        <thead>
+                                            
+                                            <tr>
+                                                <th>근태 일자</th>
+                                                <th>사번</th>
+                                                <th>성명</th>
+                                                <th>근무 부서</th>
+                                                <th>출근 시간</th>
+                                                <th>퇴근 시간</th>
+                                                <th>근태 상태</th>
+                                            </tr>
+
+                                        </thead>
+
+                                        <tbody>
+                                            <% for(var i=0; i< data.length; i++){ %>  
+                                            <tr>
+                                                <td><%=data[i].c_date%></td>
+                                                <td><%=data[i].u_employee_number%></td>
+                                                <td><%=data[i].u_name%></td>
+                                                <td><%=data[i].u_department%></td>
+                                                <td><%=data[i].c_clock_in%></td>
+                                                <td><%=data[i].c_clock_out%></td>
+                                                <td><%=data[i].c_status%></td>
+                                            </tr>
+                                            <%} %>
+                                            
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+              

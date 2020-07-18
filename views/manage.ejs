@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+
+<main>
+  <div class="container-fluid">
+    <p>
+    <ol class="breadcrumb mb-4">
+      <li class="breadcrumb-item active">사원 근태 관리</li>
+    </ol>
+    <div class="card mb-4">
+      <div class="card-header">
+        <i class="fas fa-table mr-1"></i>
+        사원 목록
+      </div>
+      <div class="container">
+        <div class="row align-items-start">
+          <% for(var i=0; i< data.length; i++){ %>
+            <div class=col-4>
+              <div class="card" style="width:200px">
+                <img class="card-img-top" src="/img/man.png" alt="Card image">
+                <div class="card-body">
+                  <h4 class="card-title"><%=data[i].u_name%></h4>
+                  <p class="card-text"><%=data[i].u_employee_number%></p>
+                  <a href="/calendar?id=<%=data[i].u_employee_number%>" class="btn btn-primary stretched-link">근무 일정 관리</a>
+                </div>
+              </div>
+            </div>
+          <%} %>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+</main>
