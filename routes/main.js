@@ -4,12 +4,12 @@ const fs = require('fs');
 const router = express.Router();
 const connection = require('../models/connection')
 
-const GetMainUI = (req, res) => {   // 메인화면을 출력합니다
+const GetMainUI = (req, res) => {  
      let htmlstream = '';
-     htmlstream = fs.readFileSync(__dirname + '/../views/header.ejs', 'utf8');    // 헤더부분
+     htmlstream = fs.readFileSync(__dirname + '/../views/header.ejs', 'utf8');   
      htmlstream = htmlstream + fs.readFileSync(__dirname + '/../views/nav.ejs', 'utf8');
      htmlstream = htmlstream + fs.readFileSync(__dirname + '/../views/report.ejs', 'utf8');
-     htmlstream = htmlstream + fs.readFileSync(__dirname + '/../views/footer.ejs', 'utf8');  // Footer
+     htmlstream = htmlstream + fs.readFileSync(__dirname + '/../views/footer.ejs', 'utf8');  
 
      res.writeHead(200, { 'Content-Type': 'text/html; charset=utf8' });
      res.write('<meta charset=utf8>');
