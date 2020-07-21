@@ -11,6 +11,7 @@
                                 <i class="fas fa-table mr-1"></i>
                                 근태 현황
                             </div>
+                           
                             <div class="card-body">
                                 <div class="table-responsive">
                                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -23,11 +24,11 @@
                                                 <th>근무 부서</th>
                                                 <th>출근 시간</th>
                                                 <th>퇴근 시간</th>
-                                                <th>근태 상태</th>
+                                                <th>상태</th>
+                                                <th>근무 진행률</th>
                                             </tr>
 
                                         </thead>
-
                                         <tbody>
                                             <% for(var i=0; i< data.length; i++){ %>  
                                             <tr>
@@ -38,9 +39,27 @@
                                                 <td><%=data[i].c_clock_in%></td>
                                                 <td><%=data[i].c_clock_out%></td>
                                                 <td><%=data[i].c_status%></td>
+                                                <td>  
+                                                     <div class="row no-gutters align-items-center">
+                                                    <div class="col mr-2">
+                                                      <div class="row no-gutters align-items-center">
+                                                        <div class="col-auto">
+                                                          <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800" ><%=data[i].rate%> %</div>
+                                                        </div>
+                                                        <div class="col">
+                                                          <div class="progress progress-sm mr-2" >
+                                                            <div class="progress-bar bg-info" role="progressbar" style="width: <%=data[i].rate%>%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                                          </div>
+                                                        </div>
+                                                      </div>
+                                                    </div>
+                                                    <div class="col-auto">
+                                                      <i class="fas fa-clipboard-list fa-1x text-gray-300"></i>
+                                                    </div>
+                                                  </div>
+                                                </td>
                                             </tr>
                                             <%} %>
-                                            
                                         </tbody>
                                     </table>
                                 </div>

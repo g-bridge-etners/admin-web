@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+
+                <main>
+                    <div class="container-fluid">
+                      <p>
+                        <ol class="breadcrumb mb-4">
+                            <li class="breadcrumb-item active">근무 일정 현황</li>
+                        </ol>
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                <i class="fas fa-table mr-1"></i>
+                                근무 일정
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                        <thead>
+                                            <tr>
+                                                <th>사번</th>
+                                                <th>근무일정 제목</th>
+                                                <th>근무일정 상세</th>
+                                                <th>시작 날짜</th>
+                                                <th>종료 날짜</th>
+                                                <th>시작 시간</th>
+                                                <th>종료 시간</th>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <% for(var i=0; i< data.length; i++){ %>  
+                                            <tr>
+                                                <td><%=data[i].a_employee_number%></td>
+                                                <td><%=data[i].a_title%></td>
+                                                <td><%=data[i].a_description%></td>
+                                                <td><%=data[i].a_start_date%> </td>
+                                                <td><%=data[i].a_end_date%> </td>
+                                                <td><%=data[i].a_start_time%> </td>
+                                                <td><%=data[i].a_end_time%> </td>
+                                            </tr>
+                                            <%} %>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+              

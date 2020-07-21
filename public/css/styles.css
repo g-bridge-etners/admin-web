@@ -4443,7 +4443,9 @@ input[type=button].btn-block {
 .card-img-top,
 .card-img-bottom {
   flex-shrink: 0;
-  width: 100%;
+  width: 80%;
+  display: block; 
+  margin: 0px auto
 }
 
 .card-img,
@@ -4964,14 +4966,15 @@ a.badge-dark:focus, a.badge-dark.focus {
     background-position: 0 0;
   }
 }
+
 .progress {
   display: flex;
   height: 1rem;
   overflow: hidden;
   line-height: 0;
   font-size: 0.75rem;
-  background-color: #e9ecef;
-  border-radius: 0.25rem;
+  background-color: #eaecf4;
+  border-radius: 0.35rem;
 }
 
 .progress-bar {
@@ -4982,9 +4985,10 @@ a.badge-dark:focus, a.badge-dark.focus {
   color: #fff;
   text-align: center;
   white-space: nowrap;
-  background-color: #007bff;
+  background-color: #4e73df;
   transition: width 0.6s ease;
 }
+
 @media (prefers-reduced-motion: reduce) {
   .progress-bar {
     transition: none;
@@ -4998,12 +5002,13 @@ a.badge-dark:focus, a.badge-dark.focus {
 
 .progress-bar-animated {
   -webkit-animation: progress-bar-stripes 1s linear infinite;
-          animation: progress-bar-stripes 1s linear infinite;
+  animation: progress-bar-stripes 1s linear infinite;
 }
+
 @media (prefers-reduced-motion: reduce) {
   .progress-bar-animated {
     -webkit-animation: none;
-            animation: none;
+    animation: none;
   }
 }
 

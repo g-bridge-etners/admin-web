@@ -98,42 +98,10 @@ $(document).ready(function() {
       $('.monthly-calendar').append(cal);
 
      
-      function dayId(week){
-        var weekYear = week.getFullYear()
-        var weekMonth = week.getMonth() + 1
-        var weekDay = week.getDate() 
-        if (weekMonth < 10) {
-          weekMonth = '0' + weekMonth
-        }
-        if (weekDay < 10) {
-          weekDay = '0' + weekDay
-        }
-        var reWeek = weekMonth + '-' + weekDay + '-' + weekYear
-        return reWeek
-      };
 
-      // 기간 년/월/일 형식
-      function period(changeDate){
-        var resDate = changeDate[2] + '년 ' + changeDate[0] + '월 ' + changeDate[1] + '일'
-        return resDate
-      }
       
-      // Daily Calendar 완성 - .daily-calendar
-      var todayYear = date.getFullYear()
-      var todayMonth = date.getMonth() + 1
-      var todayDay = date.getDate()
       var todayDate = date.getDay()
       todayDate = details.weekDays[todayDate]
-
-      // today
-      $('.daily-name').text(`${todayDay}일 ${todayDate}요일`)
-
-      var data = {
-        year: todayYear,
-        month: todayMonth,
-        day: todayDay
-      }
-
       
       // popover open
       $(function () {
@@ -144,7 +112,6 @@ $(document).ready(function() {
         return this.split(org).join(dest);
       }
 
-      // 일정 등록 modal open
       $('.week, .daily-calendar').click(function(e) {
           var todayId = e.target.id
           const year = todayId.split('-')[2]
@@ -229,10 +196,10 @@ $(function () {
 
 $(function () {
     $('#datetimepicker2').datetimepicker({
-        format: 'LT'
+        format: 'HH:mm'
     });
     $('#datetimepicker4').datetimepicker({
-        format: 'LT'
+        format: 'HH:mm'
     });
 });
 
