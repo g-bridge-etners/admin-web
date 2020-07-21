@@ -20,9 +20,13 @@
                 <div class="card-body">
                   <h4 class="card-title"><%=data[i].u_name%></h4>
                   <p class="card-text"><%=data[i].u_employee_number%></p>
-                  <a href="/calendar?id=<%=data[i].u_employee_number%>" class="btn btn-primary stretched-link">일정 추가 수정</a>
+                  <p>
+                  <a href="/calendar?id=<%=data[i].u_employee_number%>" class="btn btn-primary ">일정 추가 수정</a>
+                </p>
                   <p></p>
-                  <a href="/schedule?id=<%=data[i].u_employee_number%>" class="btn btn-primary stretched-link">근무 일정 보기</a>
+                  <p>
+                  <a href="/schedule?id=<%=data[i].u_employee_number%>" class="btn btn-primary">근무 일정 보기</a>
+                  </p>
                 </div>
               </div>
             </div>
