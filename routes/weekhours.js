@@ -21,37 +21,32 @@ const hoursPrint = (req, res) => {
     res.writeHead(200, { 'Content-Type': 'text/html; charset=utf8' });
     res.write('<meta charset=utf8>');
 
-    sql_str = "select * from gb_user as u left join gb_commute as c on c.c_employee_number = u.u_employee_number"
-    +" where c.c_date BETWEEN DATE_ADD(NOW(),INTERVAL -5 DAY ) AND NOW();";
+    sql_str = "select  u_employee_number, u_name,u_department, sum(timestampdiff(hour, c_clock_in, c_clock_out )) as time_diff"
+    +" from gb_user as u left join gb_commute as c on c.c_employee_number = u.u_employee_number "
+    + "where c.c_date BETWEEN DATE_ADD(NOW(),INTERVAL -5 DAY ) AND NOW() group by u.u_employee_number;";
 
     connection.query(sql_str, (error, results, fields) => {
         if (error) {
             res.status(1064).end(" Can no load data from DB. ");
         } else {
 
-            for(var i=0; i < results.length; i++){
+             for(var i=0; i < results.length; i++){
 
-                var t1= results[i].c_clock_in;
-                var t2= results[i].c_clock_out;
+            //     var t1= results[i].c_clock_in;
+            //     var t2= results[i].c_clock_out;
                
-                console.log(t1);
-                console.log(t2);
+            //     console.log(t1);
+            //     console.log(t2);
 
-                var hour = new Array();
-                hour[i]=moment.duration(moment(t2).diff(moment(t1))).hours();
+            //     var hour = new Array();
+            //     hour[i]=moment.duration(moment(t2).diff(moment(t1))).hours();
                 
-                console.log(hour[i]);
+            //     console.log(hour[i]);
+            //     console.log(typeof(hour[i]));
+            
+            console.log(results[i].time_diff);
 
-                var weekhour = new Array();
-                weekhour += hour[i];
-
-                console.log(weekhour);
-
-                results[i].weekhour = weekhour;
-                
-                console.log(results[i].weekhour);
-            }
-
+             }
             res.end(ejs.render(htmlstream, {
                 title: 'Eteners Admin',
                 data: results

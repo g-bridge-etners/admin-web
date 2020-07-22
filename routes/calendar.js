@@ -2,7 +2,6 @@ const express = require('express');
 const ejs = require('ejs');
 const fs = require('fs');
 const router = express.Router();
-const   bodyParser = require('body-parser');
 const mysql = require('mysql');
 const connection = require('../models/connection');
 const moment = require('moment');

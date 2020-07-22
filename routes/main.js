@@ -18,7 +18,7 @@ const GetMainUI = (req, res) => {
      res.writeHead(200, { 'Content-Type': 'text/html; charset=utf8' });
      res.write('<meta charset=utf8>');
 
-     var sql_str = "select * from gb_user as u left join gb_commute as t on t.c_employee_number = u.u_employee_number  ;";
+     var sql_str = "select * from gb_user as u inner join gb_commute as t on t.c_employee_number = u.u_employee_number ;";
      connection.query(sql_str , (error, results, fields) => {
          if (error) {
              res.status(1064).end(" Can not insert data to DB. ");
@@ -31,23 +31,27 @@ const GetMainUI = (req, res) => {
             results[i].c_date = moment(results[i].c_date).format('YYYY년 MM월 DD일');
 
             var now = moment();
-
+                
             var since_hour = moment.duration(now.diff(results[i].c_clock_in)).hours();
             
             var rate = new Array();
 
             rate[i] = (since_hour / 9) * 100;
-            if (rate[i] > 100){
+
+            if (rate[i] > 100 || results[i].c_status == '퇴근완료'){
                 rate[i] = 100;
             }
-    
+           
             rate[i] = Math.round(rate[i]);
             console.log(rate[i]);
 
             results[i].rate = rate[i];
             results[i].c_clock_in = moment(results[i].c_clock_in).format('LTS');
+            if (results[i].c_status =='출근중'){
+                results[i].c_clock_out =  moment(results[i].c_clock_out).format(' ');
+            }else{
             results[i].c_clock_out = moment(results[i].c_clock_out).format('LTS');
-
+            }
              }
              res.end(ejs.render(htmlstream, {
                  title: 'Eteners Admin',
